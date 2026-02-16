@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from ats.routes import router as ats_router
-from recommend.routes import router as recommend_router
+from Routers.routes import router as ats_router
 import uvicorn
 
 app = FastAPI(
@@ -32,7 +31,8 @@ async def root():
     }
     
 app.include_router(ats_router,prefix="/ats" , tags=["ATS"])
-app.include_router(recommend_router,prefix="/recommend" , tags=["Recommendations"])
+# app.include_router(recommend_router,prefix="/recommend" , tags=["Recommendations"])
 
 if __name__ == "__main__":
     uvicorn.run("app:app",host = "0.0.0.0",port=8000, reload=True)
+
